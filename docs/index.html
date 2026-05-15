@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolShortcut 下载站</title>
+    <meta name="description" content="从 GitHub 仓库快速下载当前目录中的安装包与压缩包。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div class="page-shell">
+        <div class="ambient ambient-left"></div>
+        <div class="ambient ambient-right"></div>
+
+        <main class="layout">
+            <section class="hero-card">
+                <p class="eyebrow">GITHUB PAGES</p>
+                <h1>当前目录文件下载页</h1>
+                <p class="hero-copy">
+                    页面会优先直接读取 GitHub 仓库根目录文件列表，并生成下载按钮。
+                    你把新文件推到仓库后，页面刷新即可同步看到。
+                </p>
+
+                <div class="hero-actions">
+                    <a class="button button-primary" id="repoLink" href="https://github.com/shaoyanhua/ToolShortcut" target="_blank" rel="noreferrer">查看仓库</a>
+                    <span class="status-pill" id="statusPill">准备读取文件列表</span>
+                </div>
+
+                <dl class="stats-grid">
+                    <div>
+                        <dt>仓库</dt>
+                        <dd id="repoName">shaoyanhua / ToolShortcut</dd>
+                    </div>
+                    <div>
+                        <dt>文件数量</dt>
+                        <dd id="fileCount">0</dd>
+                    </div>
+                    <div>
+                        <dt>总大小</dt>
+                        <dd id="totalSize">0 B</dd>
+                    </div>
+                </dl>
+            </section>
+
+            <section class="panel">
+                <div class="panel-head">
+                    <div>
+                        <p class="panel-kicker">FILE LIST</p>
+                        <h2>可下载文件</h2>
+                    </div>
+                    <p class="panel-note" id="panelNote">正在连接 GitHub API...</p>
+                </div>
+
+                <div class="file-grid" id="fileGrid"></div>
+            </section>
+        </main>
+    </div>
+
+    <template id="fileCardTemplate">
+        <article class="file-card">
+            <div class="file-topline">
+                <span class="file-ext"></span>
+                <span class="file-size"></span>
+            </div>
+            <h3 class="file-name"></h3>
+            <p class="file-meta"></p>
+            <a class="button button-secondary file-link" target="_blank" rel="noreferrer">下载文件</a>
+        </article>
+    </template>
+
+    <script src="./app.js" defer></script>
+</body>
+</html>
